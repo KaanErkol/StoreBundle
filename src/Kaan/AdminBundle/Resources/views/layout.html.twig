@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Bootstrap 101 Template</title>
+    <!-- Bootstrap -->
+    {% include 'BraincraftedBootstrapBundle::_stylesheets.html.twig' %}
+    {% stylesheets 
+        'bundles/admin/css/*'
+        filter='cssrewrite'
+    %}
+    <link rel="stylesheet" type="text/css" href="{{ asset_url }}">
+    {% endstylesheets %}
+  </head>
+  <body>
+      <div class="navbar navbar-inverse navbar-static-top">
+        <div class="navbar-inner">
+            <div class="container">
+                <a class="brand" href="#">Title</a>
+                {{ knp_menu_render('AdminBundle:Builder:topNavbar', {'nav_type': 'navbar'}) }}
+            </div>
+        </div>
+      </div>
+          <div class="container" style="margin-top:15px;">
+          <div class="row">
+              <div class="span3">
+                  sidebar
+              </div>
+              <div class="span9">
+                {% block content %}
+                {% endblock %}
+              </div>
+          </div>
+      </div>
+    {% include 'BraincraftedBootstrapBundle::_javascripts.html.twig' %}
+    {% javascripts 
+        'bundles/admin/js/*'
+    %}
+          <script src="{{ asset_url }}" type="text/javascript"></script>
+    {% endjavascripts %}
+    {% block javascript %}
+    {% endblock %}
+  </body>
+</html>

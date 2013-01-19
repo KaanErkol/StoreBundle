@@ -1,0 +1,21 @@
+{% for tax in taxonomies %}
+<tr>
+    <td>{{ tax.title}}</td>
+    <td>
+    {% if tax.__children != 0 %}
+        {% include 'AdminBundle:Taxonomies:subterms.html.twig' with {'children': tax.__children} %}
+    {% endif %}
+    </td>
+    <td>
+     <div class="btn-group">
+         <a class="btn btn-primary btn-mini" href="{{ path('taxonomies_update',{'id':tax.id}) }}">
+             <i class="icon-pencil icon-white"></i> Edit
+         </a>
+         <a class="btn btn-danger btn-mini" href="{{ path('taxonomies_delete',{'id':tax.id}) }}">
+             <i class="icon-trash icon-white"></i> Delete
+         </a>
+      </div>   
+    </td>
+</tr>
+
+{% endfor %}

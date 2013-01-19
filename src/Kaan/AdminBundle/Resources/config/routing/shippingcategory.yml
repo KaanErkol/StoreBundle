@@ -1,0 +1,30 @@
+shippingcategory:
+    pattern:  /
+    defaults: { _controller: "AdminBundle:ShippingCategory:index" }
+
+shippingcategory_show:
+    pattern:  /{id}/show
+    defaults: { _controller: "AdminBundle:ShippingCategory:show" }
+
+shippingcategory_new:
+    pattern:  /new
+    defaults: { _controller: "AdminBundle:ShippingCategory:new" }
+
+shippingcategory_create:
+    pattern:  /create
+    defaults: { _controller: "AdminBundle:ShippingCategory:create" }
+    requirements: { _method: post }
+
+shippingcategory_edit:
+    pattern:  /{id}/edit
+    defaults: { _controller: "AdminBundle:ShippingCategory:edit" }
+
+shippingcategory_update:
+    pattern:  /{id}/update
+    defaults: { _controller: "AdminBundle:ShippingCategory:update" }
+    requirements: { _method: post }
+
+shippingcategory_delete:
+    pattern:  /{id}/delete
+    defaults: { _controller: "AdminBundle:ShippingCategory:delete" }
+    requirements: { _method: post }

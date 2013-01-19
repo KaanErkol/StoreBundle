@@ -1,0 +1,13 @@
+#Security
+_security_login:
+    pattern:  /login
+    defaults: { _controller: UserBundle:Security:login }
+
+_security_check:
+    pattern:  /login_check
+
+_security_logout:
+    pattern:  /logout
+_security_register:
+    pattern:  /register
+    defaults: { _controller: UserBundle:Security:register }

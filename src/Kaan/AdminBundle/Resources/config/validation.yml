@@ -1,0 +1,4 @@
+Kaan\CoreBundle\Entity\Taxonomies:
+    properties:
+        title:
+            - NotBlank: ~

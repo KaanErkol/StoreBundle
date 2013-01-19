@@ -1,0 +1,22 @@
+{% block content %}
+    <section>
+        <div class="eight columns">
+            {% if error %}
+            <label class="error">{{ error.message }}</label>
+            {% endif %}
+
+            <form action="{{ path('_security_check') }}" method="POST" class="comment-form validate" novalidate="true">
+                <div>
+                    <label for="username">Username:</label>
+                    <input class="required" type="text" id="username" name="_username" value="{{ last_username }}" required="true"/>
+                </div>
+                <div>
+                    <label for="password">Password:</label>
+                    <input type="password" id="password" name="_password" required="true"/>
+                </div>
+                <button type="submit" class="btn btn-large btn-primary"> Login</button>
+            </form>
+        </div>
+        <div class="clear"></div>
+    </section>
+{% endblock %}

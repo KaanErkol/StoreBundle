@@ -1,0 +1,15 @@
+taxonomies_homepage:
+    pattern: /
+    defaults: { _controller: AdminBundle:Taxonomies:index }
+
+taxonomies_delete:
+    pattern: /delete/{id}
+    defaults: { _controller: AdminBundle:Taxonomies:delete }
+    
+taxonomies_create:
+    pattern: /create
+    defaults: { _controller: AdminBundle:Taxonomies:create }
+
+taxonomies_update:
+    pattern: /update/{id}
+    defaults: { _controller: AdminBundle:Taxonomies:update }

@@ -1,0 +1,19 @@
+{% extends 'AdminBundle::layout.html.twig' %}
+{% block content %}
+<form action="{{ path('taxonomies_create') }}" method="post" class="form-horizontal">
+  <legend>Category Create</legend>
+  {{ form_widget(form, {'form_type': 'horizontal'}) }}
+  <div class="control-group">
+    <div class="controls">
+      <button type="submit" class="btn">Create</button>
+    </div>
+  </div>
+</form>
+{% endblock %}
+{% block javascript %}
+<script>
+    $(document).ready(function(){
+        $('.chosen').chosen({allow_single_deselect:true});
+    });
+</script>
+{% endblock %}

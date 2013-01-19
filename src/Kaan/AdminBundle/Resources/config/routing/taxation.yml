@@ -1,0 +1,30 @@
+taxation:
+    pattern:  /
+    defaults: { _controller: "AdminBundle:Taxation:index" }
+
+taxation_show:
+    pattern:  /{id}/show
+    defaults: { _controller: "AdminBundle:Taxation:show" }
+
+taxation_new:
+    pattern:  /new
+    defaults: { _controller: "AdminBundle:Taxation:new" }
+
+taxation_create:
+    pattern:  /create
+    defaults: { _controller: "AdminBundle:Taxation:create" }
+    requirements: { _method: post }
+
+taxation_edit:
+    pattern:  /{id}/edit
+    defaults: { _controller: "AdminBundle:Taxation:edit" }
+
+taxation_update:
+    pattern:  /{id}/update
+    defaults: { _controller: "AdminBundle:Taxation:update" }
+    requirements: { _method: post }
+
+taxation_delete:
+    pattern:  /{id}/delete
+    defaults: { _controller: "AdminBundle:Taxation:delete" }
+    requirements: { _method: post }

@@ -1,0 +1,20 @@
+{% extends 'AdminBundle::layout.html.twig' %}
+{% block content %}
+<form action="{{ path('taxonomies_update',{'id':tax.id}) }}" method="post" class="form-horizontal">
+  <legend>{% trans with {'%name%': tax.title} from "admin" %}Update %name%{% endtrans %}</legend>
+  {{ form_widget(form, {'form_type': 'horizontal'}) }}
+  <div class="control-group">
+    <div class="controls">
+      <button type="submit" class="btn btn-primary">Update</button>
+      <a href="{{ path('taxonomies_homepage') }}" class="btn">Cancel</a>
+    </div>
+  </div>
+</form>
+{% endblock %}
+{% block javascript %}
+<script>
+    $(document).ready(function(){
+        $('.chosen').chosen({allow_single_deselect:true});
+    });
+</script>
+{% endblock %}

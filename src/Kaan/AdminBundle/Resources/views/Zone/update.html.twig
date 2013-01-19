@@ -1,0 +1,27 @@
+{% extends 'AdminBundle::layout.html.twig' %}
+{% block content %}
+<form action="{{ path('zone_update',{'id': entity.id }) }}" method="post" class="form-horizontal">
+  <legend>Zone Update</legend>
+  {{ form_widget(form, {'form_type': 'horizontal'}) }}
+  <div class="control-group">
+    <div class="controls">
+        <div class="btn-group">
+      <button type="submit" class="btn btn-primary">Update</button>
+      <a href="{{ path('zone_homepage') }}" class="btn">
+          <i class="icon-circle-arrow-left"></i> Back
+      </a>
+      <a href="#" class="btn btn-danger">
+          <i class="icon-white icon-trash"></i> Delete
+      </a>
+      </div>
+    </div>
+  </div>
+</form>
+{% endblock %}
+{% block javascript %}
+<script>
+    $(document).ready(function(){
+        $('.chosen').chosen({allow_single_deselect:true});
+    });
+</script>
+{% endblock %}

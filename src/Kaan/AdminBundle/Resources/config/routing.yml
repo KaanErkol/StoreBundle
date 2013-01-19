@@ -1,0 +1,18 @@
+admin_homepage:
+    pattern:  /
+    defaults: { _controller: AdminBundle:Default:index }
+    
+taxonomies:
+    prefix: /taxonomies
+    resource: "@AdminBundle/Resources/config/routing/taxonomies.yml"
+    
+shippingcategory:
+    resource: "@AdminBundle/Resources/config/routing/shippingcategory.yml"
+    prefix:   /shippingcategory
+
+zone:
+    resource: "@AdminBundle/Resources/config/routing/zone.yml"
+    prefix:   /zone
+taxation:
+    resource: "@AdminBundle/Resources/config/routing/taxation.yml"
+    prefix:   /taxation

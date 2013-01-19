@@ -1,0 +1,11 @@
+zone_homepage:
+    pattern: /
+    defaults: { _controller: AdminBundle:Zone:index }
+    
+zone_update:
+    pattern: /update/{id}
+    defaults: { _controller: AdminBundle:Zone:update }
+
+zone_create:
+    pattern: /create
+    defaults: { _controller: AdminBundle:Zone:create }
