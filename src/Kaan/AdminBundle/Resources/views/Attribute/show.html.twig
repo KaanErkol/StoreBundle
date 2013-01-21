@@ -19,6 +19,7 @@
     <a class="btn btn-primary" href="{{ path('attribute_edit', { 'id': entity.id }) }}">
         <i class="icon-pencil icon-white"></i> Edit
     </a>
+        <a href="{{ path('attribute_new') }}" class="btn">Create New</a>
 </div>
 <form action="{{ path('attribute_delete', { 'id': entity.id }) }}" method="post">
     {{ form_widget(delete_form) }}

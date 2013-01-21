@@ -1,0 +1,7 @@
+.tab-content {
+    display: inline-block;
+    overflow: visible;
+}
+.description{
+    min-height: 200px;
+}

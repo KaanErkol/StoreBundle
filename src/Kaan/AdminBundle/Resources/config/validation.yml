@@ -2,3 +2,8 @@ Kaan\CoreBundle\Entity\Taxonomies:
     properties:
         title:
             - NotBlank: ~
+
+Kaan\CoreBundle\Entity\Product:
+    properties:
+        sku:
+            - NotBlank: ~

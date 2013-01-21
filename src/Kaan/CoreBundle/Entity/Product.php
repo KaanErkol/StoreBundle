@@ -71,7 +71,7 @@ class Product
     protected $shippingCategory;
     
     /**
-     * @ORM\Column(type="string",length=255)
+     * @ORM\Column(type="string",length=255, nullable=TRUE)
      * 
      * @var string
      */

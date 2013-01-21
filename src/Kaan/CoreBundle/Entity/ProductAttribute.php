@@ -116,4 +116,7 @@ class ProductAttribute
     {
         return $this->product;
     }
+    public function __toString() {
+        return $this->getAttribute()->getName();
+    }
 }

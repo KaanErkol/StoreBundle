@@ -5,34 +5,90 @@ namespace Kaan\AdminBundle\Form;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolverInterface;
+use Doctrine\ORM\EntityManager;
+use Kaan\AdminBundle\Form\ProductAttributeType;
 
 class ProductType extends AbstractType {
 
     public function buildForm(FormBuilderInterface $builder, array $options) {
+
+
         $builder
-                ->add('name')
-                ->add('description')
-                ->add('permalink')
-                ->add('sku')
-                ->add('avaibleOn')
-                ->add('price', 'money')
-                ->add('stock')
-                ->add('image')
-                ->add('variantMode')
-                ->add('shippingCategory')
-                ->add('taxationCategory')
-                ->add('taxonomies', 'entity', array(
-                    'class' => 'CoreBundle:Taxonomies',
-                    'multiple' => TRUE,
-                    'query_builder' => function($er) {
-                        return $er->createQueryBuilder('t')
-                                ->orderBy('t.root', 'ASC')
-                                ->where('t.lvl > 0')
-                                ->addOrderBy('t.lft', 'ASC');
-                    },
-                    'attr' => array('class' => 'chosen')
+                ->add('name', 'text', array(
+                    'label_attr' => array(
+                        'class' => 'control-label'
+                    ),
+                    'attr' => array('class' => 'input-xxlarge')
                 ))
-                ->add('options')
+                ->add('description', 'textarea', array(
+                    'label_attr' => array(
+                        'class' => 'control-label'
+                    ),
+                    'attr' => array('class' => 'input-xxlarge description')
+                ))
+                ->add('permalink', 'text', array(
+                    'label_attr' => array(
+                        'class' => 'control-label'
+                    ),
+                    'attr' => array('class' => 'input-xlarge')
+                ))
+                ->add('sku', 'text', array(
+                    'label_attr' => array(
+                        'class' => 'control-label'
+                    ),
+                    'attr' => array('class' => 'input-xlarge')
+                ))
+                ->add('avaibleOn', 'datetime', array(
+                    'label_attr' => array(
+                        'class' => 'control-label'
+                    )
+                ))
+                ->add('price', 'text', array(
+                    'label_attr' => array(
+                        'class' => 'control-label'
+                    ),
+                    'attr' => array('class' => 'input-xlarge', 'prepend_input' => '$')
+                ))
+                ->add('stock', 'integer', array(
+                    'label_attr' => array(
+                        'class' => 'control-label'
+                    ),
+                    'attr' => array('class' => 'input-xlarge')
+                ))
+                ->add('variantMode', 'choice', array(
+                    'choices' => array(
+                        '0' => 'Display List Variant',
+                        '1' => 'Display Option'
+                    ),
+                    'label_attr' => array(
+                        'class' => 'control-label'
+                    )
+                ))
+                ->add('shippingCategory', null, array(
+                    'attr' => array('class' => 'chosen'),
+                    'label_attr' => array(
+                        'class' => 'control-label'
+                    )
+                ))
+                ->add('taxationCategory', null, array(
+                    'attr' => array('class' => 'chosen'),
+                    'label_attr' => array(
+                        'class' => 'control-label'
+                    )
+                ))
+                ->add('options', null, array(
+                    'attr' => array('class' => 'chosen'),
+                    'label_attr' => array(
+                        'class' => 'control-label'
+                    )
+                ))
+                ->add('attribute', 'collection', array(
+                    'type' => new ProductAttributeType(),
+                    'allow_add' => true,
+                    'allow_delete' => true,
+                    'by_reference' => true,
+                        )
+                )
         ;
     }
 

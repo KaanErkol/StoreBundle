@@ -32,6 +32,7 @@ class ZoneController extends Controller{
             if($form->isValid()){
                 $em->persist($entity);
                 $em->flush();
+                return $this->redirect($this->generateUrl('zone_homepage'));
             }
         }
         

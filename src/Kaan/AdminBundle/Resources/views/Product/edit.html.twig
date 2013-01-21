@@ -1,17 +1,24 @@
 {% extends 'AdminBundle::layout.html.twig' %}
-{% macro taxonomi(taxonomies) %}
+{% macro taxonomi(taxonomies,entity) %}
 {% spaceless %}
     {% for tax in taxonomies %}
-        <option value="{{ tax.id }}">{{ tax.title }}</option>
+        <option {% for test in entity.taxonomies %}
+                                            {% if tax.id== test.id %}selected="true"{%endif%}
+                                        {% endfor %} value="{{ tax.id }}">{{ tax.title }}</option>
         {{ _self.taxonomi(tax.children) }}
     {% endfor %}
 {% endspaceless %}
 {% endmacro %}
 
 {% block content %}
-<form action="{{ path('product_create') }}" method="post" class="form-horizontal">
+        {% if form_errors(form) %}
+        <div class="alert">
+            {{ form_errors(form) }}
+        </div>
+        {% endif %}
+<form action="{{ path('product_update',{'id': entity.id}) }}" method="post" class="form-horizontal">
     {{ form_widget(form._token) }} 
-    <legend>Product Create</legend>
+    <legend>Product Edit </legend>
     <div class="tabbable"> <!-- Only required for left/right tabs -->
         <ul class="nav nav-tabs">
             <li class="active"><a href="#tab1" data-toggle="tab">General</a></li>
@@ -96,7 +103,7 @@
                         <div class="controls">
                             <ul class="unstyled child" data-prototype="{{ form_widget(form.attribute.vars.prototype)|e }}">
                                 {% for val in form.attribute %}
-                                    <li style="margin-bottom: 5px;">Value :{{ form_widget(val.value) }}</li>
+                                    <li style="margin-bottom: 5px;">{{ form_widget(val.attribute) }} : {{ form_widget(val.value) }}</li>
                                 {% endfor %}
                             </ul>
                         </div>
@@ -110,8 +117,10 @@
                         <div class="controls">
                             <select name="taxonomies[]" class="chosen" multiple="true">
                                 {% for sub in tax.children %}
-                                    <option value="{{ sub.id }}">{{ sub.title }}</option>
-                                    {{ _self.taxonomi(sub.children) }}
+                                    <option {% for test in entity.taxonomies %}
+                                            {% if sub.id== test.id %}selected="true"{%endif%}
+                                        {% endfor %} value="{{ sub.id }}">{{ sub.title }}</option>
+                                    {{ _self.taxonomi(sub.children,entity) }}
                                 {% endfor %}
                             </select>
                         </div>
@@ -126,7 +135,7 @@
                     <div class="form-actions">
                         <div class="controls">
                             <div class="btn-group">
-                                <button type="submit" class="btn btn-primary">Create</button>
+                                <button type="submit" class="btn btn-primary">Update</button>
                                 <a href="{{ path('product') }}" class="btn">
                                     <i class="icon-circle-arrow-left"></i> Back
                                 </a>
@@ -135,6 +144,14 @@
                     </div>
                 </div>
             </form>
+                                        <div class="pull-right">
+                                    <form method="post" action="{{ path('product_delete',{'id':entity.id }) }}">
+                                    {{ form_widget(delete_form) }}
+                                            <button type="submit" class="btn btn-danger">
+                                                <i class="icon-trash icon-white"></i> Delete
+                                            </button>
+                                    </form>
+                                </div>
 {% endblock %}
 {% block javascript %}
 <script>

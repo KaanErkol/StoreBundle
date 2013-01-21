@@ -15,3 +15,7 @@ product_delete:
     defaults: { _controller: AdminBundle:Product:delete }
     requirements:
         _format: POST
+        
+product_update:
+    pattern: /update/{id}
+    defaults: { _controller: AdminBundle:Product:update }
