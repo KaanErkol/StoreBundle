@@ -1,0 +1,30 @@
+option:
+    pattern:  /
+    defaults: { _controller: "AdminBundle:Option:index" }
+
+option_show:
+    pattern:  /{id}/show
+    defaults: { _controller: "AdminBundle:Option:show" }
+
+option_new:
+    pattern:  /new
+    defaults: { _controller: "AdminBundle:Option:new" }
+
+option_create:
+    pattern:  /create
+    defaults: { _controller: "AdminBundle:Option:create" }
+    requirements: { _method: post }
+
+option_edit:
+    pattern:  /{id}/edit
+    defaults: { _controller: "AdminBundle:Option:edit" }
+
+option_update:
+    pattern:  /{id}/update
+    defaults: { _controller: "AdminBundle:Option:update" }
+    requirements: { _method: post }
+
+option_delete:
+    pattern:  /{id}/delete
+    defaults: { _controller: "AdminBundle:Option:delete" }
+    requirements: { _method: post }

@@ -1,6 +1,6 @@
 <?php
 
-namespace Kaan\UserBundle\Form\Type;
+namespace Kaan\AdminBundle\Form;
 
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
@@ -13,12 +13,17 @@ class UserType extends AbstractType
         $builder
             ->add('username','text',array(
             'label' => 'Kullanıcı Adı',
-            'attr' => array(
-                'append_input'=>'<i class="icon-user"></i>'
-            )
         ))
 
-            ->add('email','email')
+            ->add('email')
+            ->add('UserRoles','entity',array(
+                'class' => 'UserBundle:Role',
+                'property'     => 'name',
+                'multiple' => true,
+                'attr' => array(
+                    'class' => 'chosen'
+                )
+            ))
             ->add('password', 'repeated', array (
                 'label' => 'Password',
                 'type'            => 'password',
@@ -26,6 +31,7 @@ class UserType extends AbstractType
                 'second_name'     => "Password-Confirm",
                 'second_options'  => array('label'=>'Re Password'),
                 'invalid_message' => "The passwords don't match!",
+                'required' => FALSE
             ));
     }
 

@@ -10,16 +10,16 @@
     <div class="clearfix"></div>
 </div>
 
-    <table class="table table-bordered">
-        <thead>
-            <tr>
-                <th>Name</th>
-                <th>terms</th>
-                <th width="100">Actions</th>
-            </tr>
-        </thead>
-        <tbody>
-        {% include 'AdminBundle:Taxonomies:list.html.twig' with {'taxonomies': taxonomies} %}
-        </tbody>
-    </table>
+<table class="table table-bordered">
+    <thead>
+        <tr>
+            <th>Name</th>
+            <th>terms</th>
+            <th width="100">Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+    {% include 'AdminBundle:Taxonomies:list.html.twig' with {'taxonomies': taxonomies} %}
+    </tbody>
+</table>
 {% endblock %}

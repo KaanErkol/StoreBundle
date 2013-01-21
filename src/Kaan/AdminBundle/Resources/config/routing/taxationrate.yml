@@ -1,0 +1,20 @@
+taxationrate_homepage:
+    pattern: /
+    defaults: { _controller: AdminBundle:TaxationRate:index }
+
+taxationrate_show:
+    pattern: /show/{id}
+    defaults: { _controller: AdminBundle:TaxationRate:show }
+    
+taxationrate_update:
+    pattern: /update/{id}
+    defaults: { _controller: AdminBundle:TaxationRate:update }
+    
+taxationrate_delete:
+    pattern: /delete/{id}
+    defaults: { _controller: AdminBundle:TaxationRate:delete }
+    requirements:
+        _METHOD: POST
+taxationrate_create:
+    pattern: /create
+    defaults: { _controller: AdminBundle:TaxationRate:create }    

@@ -163,4 +163,7 @@ class Zone {
     {
         return $this->updatedAt;
     }
+    public function __toString() {
+        return $this->getName();
+    }
 }

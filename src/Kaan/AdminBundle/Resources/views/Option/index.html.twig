@@ -1,0 +1,48 @@
+{% extends 'AdminBundle::layout.html.twig' %}
+{% block content %}
+<div class="page-header">
+    <h1 class="pull-left">Option List</h1>
+    <div class="pull-right" style="margin-top:15px">
+    <a class="btn btn-large btn-primary" href="{{ path('option_new') }}">
+        <i class="icon-white icon-plus"></i> Create
+    </a>
+    </div>
+    <div class="clearfix"></div>
+</div>
+<table class="records_list table table-striped">
+    <thead>
+        <tr>
+            <th>Name</th>
+            <th>presentation</th>
+            <th>Values</th>
+            <th style="width: 100px">Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+    {% for entity in entities %}
+        <tr>
+            <td>{{ entity.name }}</td>
+            <td>{{ entity.presentation }}</td>
+            <td>
+                <ul>
+                {% for value in entity.child %}
+                    <li>{{ value.value }}</li>
+                {% endfor %}
+                </ul>
+            </td>
+            <td>
+                <div class="btn-group">
+                    <a class="btn" href="{{ path('option_show', { 'id': entity.id }) }}">
+                        <i class="icon-eye-open"></i> Show
+                    </a>
+                    <a class="btn btn-primary" href="{{ path('option_edit', { 'id': entity.id }) }}">
+                        <i class="icon-white icon-pencil"></i> Edit
+                    </a>
+                </div>
+            </td>
+        </tr>
+    {% endfor %}
+    </tbody>
+</table>
+
+{% endblock %}

@@ -1,0 +1,48 @@
+{% extends 'AdminBundle::layout.html.twig' %}
+{% block content %}
+<div class="page-header">
+    <h1 class="pull-left">Taxation Rate List</h1>
+    <div class="pull-right" style="margin-top:15px">
+    <a class="btn btn-large btn-primary" href="{{ path('taxationrate_create') }}">
+        <i class="icon-white icon-plus"></i> Create
+    </a>
+    </div>
+    <div class="clearfix"></div>
+</div>
+<table class="records_list table table-bordered table-striped">
+    <thead>
+        <tr>
+            <th>Name</th>
+            <th>Category</th>
+            <th>Zone</th>
+            <th>Amount</th>
+            <th>Include Price?</th>
+            <th style="width: 140px">Updatedat</th>
+            <th style="width: 100px">Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+    {% for entity in taxationRates %}
+        <tr>
+            <td>{{ entity.name }}</td>
+            <td><a href="{{ path('taxation_show',{'id': entity.category.id}) }}">{{ entity.category.name }}</a></td>
+            <td>{{ entity.zone.name }}</td>
+            <td>{{ entity.amount }}</td>
+            <td>{% if entity.includePrice %}<span class="label label-success">Yes</span>{% else %}<span class="label label-important">No</span>{% endif %}</td>
+            <td>{% if entity.updatedAt %}{{ entity.updatedAt|date('Y-m-d H:i:s') }}{% endif %}</td>
+            <td>
+                <div class="btn-group">
+                    <a class="btn" href="{{ path('taxationrate_show', { 'id': entity.id }) }}">
+                        <i class="icon-eye-open"></i> Show
+                    </a>
+                    <a class="btn btn-primary" href="{{ path('taxationrate_update', { 'id': entity.id }) }}">
+                        <i class="icon-white icon-pencil"></i> Edit
+                    </a>
+                </div>
+            </td>
+        </tr>
+    {% endfor %}
+    </tbody>
+</table>
+
+{% endblock %}

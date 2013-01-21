@@ -38,7 +38,7 @@ class TaxationRate {
 
 
     /**
-     * @ORM\Column(type="integer")
+     * @ORM\Column(type="float")
      * 
      * @var type integer
      */
@@ -215,5 +215,8 @@ class TaxationRate {
     public function getZone()
     {
         return $this->zone;
+    }
+    public function __toString() {
+        return $this->getName();
     }
 }

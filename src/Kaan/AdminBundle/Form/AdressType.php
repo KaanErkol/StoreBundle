@@ -6,36 +6,30 @@ use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolverInterface;
 
-class TaxationRateType extends AbstractType
+class AdressType extends AbstractType
 {
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
             ->add('name')
-            ->add('amount')
-            ->add('category',null,array(
-                'required' => true
-            ))
-            ->add('zone',null,array(
-                'required' => true
-            ))
-            ->add('includePrice','checkbox',array(
-                'required' => False,
-                'label' => 'Include Price ?'
-            ))
-
+            ->add('city')
+            ->add('postcode')
+            ->add('adress')
+            ->add('phone')
+            ->add('shippingname')
+            ->add('country')
         ;
     }
 
     public function setDefaultOptions(OptionsResolverInterface $resolver)
     {
         $resolver->setDefaults(array(
-            'data_class' => 'Kaan\CoreBundle\Entity\TaxationRate'
+            'data_class' => 'Kaan\CoreBundle\Entity\Adress'
         ));
     }
 
     public function getName()
     {
-        return 'kaan_corebundle_taxationratetype';
+        return 'kaan_corebundle_adresstype';
     }
 }

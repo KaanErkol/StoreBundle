@@ -1,5 +1,4 @@
 <?php
-
 namespace Kaan\CoreBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
@@ -7,10 +6,10 @@ use Gedmo\Mapping\Annotation as Gedmo;
 
 /**
  * @ORM\Entity
- * @ORM\Table(name="taxation")
+ * @ORM\Table(name="options")
  */
-class Taxation {
-
+class Option
+{
     /**
      * @ORM\Id
      * @ORM\Column(type="integer")
@@ -21,20 +20,25 @@ class Taxation {
     protected $id;
 
     /**
-     * @ORM\Column(type="string",length=255)
+     * @ORM\Column(type="string",length=128)
      * @var string $name
      */
     protected $name;
+    
+    /**
+     * @ORM\Column(type="string",length=255)
+     * @var string
+     */
+    protected $presentation;
 
     /**
-     * @ORM\Column(type="datetime")
-     * @Gedmo\Timestampable(on="update")
+     * @ORM\OneToMany(targetEntity="OptionValue", mappedBy="option");
      * 
-     * @var type datetime
+     * @var array
      */
-    protected $updatedAt;
+    protected $child;
 
-
+    
     /**
      * Get id
      *
@@ -49,7 +53,7 @@ class Taxation {
      * Set name
      *
      * @param string $name
-     * @return Taxation
+     * @return Option
      */
     public function setName($name)
     {
@@ -69,28 +73,25 @@ class Taxation {
     }
 
     /**
-     * Set updatedAt
+     * Set presentation
      *
-     * @param \DateTime $updatedAt
-     * @return Taxation
+     * @param string $presentation
+     * @return Option
      */
-    public function setUpdatedAt($updatedAt)
+    public function setPresentation($presentation)
     {
-        $this->updatedAt = $updatedAt;
+        $this->presentation = $presentation;
     
         return $this;
     }
 
     /**
-     * Get updatedAt
+     * Get presentation
      *
-     * @return \DateTime 
+     * @return string 
      */
-    public function getUpdatedAt()
+    public function getPresentation()
     {
-        return $this->updatedAt;
-    }
-    public function __toString() {
-        return $this->getName();
+        return $this->presentation;
     }
 }

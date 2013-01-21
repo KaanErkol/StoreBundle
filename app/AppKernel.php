@@ -27,6 +27,7 @@ class AppKernel extends Kernel
             new Kaan\UserBundle\UserBundle(),
             new Kaan\CoreBundle\CoreBundle(),
             new Kaan\AdminBundle\AdminBundle(),
+            new Acme\PizzaBundle\AcmePizzaBundle(),
         );
 
         if (in_array($this->getEnvironment(), array('dev', 'test'))) {

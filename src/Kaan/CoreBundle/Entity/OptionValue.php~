@@ -1,0 +1,70 @@
+<?php
+namespace Kaan\CoreBundle\Entity;
+
+use Doctrine\ORM\Mapping as ORM;
+use Gedmo\Mapping\Annotation as Gedmo;
+
+/**
+ * @ORM\Entity
+ * @ORM\Table(name="option_value")
+ */
+class OptionValue
+{
+    /**
+     * @ORM\Id
+     * @ORM\Column(type="integer")
+     * @ORM\GeneratedValue(strategy="AUTO")
+     *
+     * @var integer $id
+     */
+    protected $id;
+
+    /**
+     * @ORM\Column(type="string",length=128)
+     * @var string $name
+     */
+    protected $value;
+    
+    /**
+     * @ORM\ManyToOne(targetEntity="Option", inversedBy="child")
+     * @ORM\JoinColumn(name="option_id",referencedColumnName="id")
+     * 
+     * @var string
+     */
+    protected $option;
+
+
+    /**
+     * Get id
+     *
+     * @return integer 
+     */
+    public function getId()
+    {
+        return $this->id;
+    }
+
+    /**
+     * Set value
+     *
+     * @param string $value
+     * @return OptionValue
+     */
+    public function setValue($value)
+    {
+        $this->value = $value;
+    
+        return $this;
+    }
+
+    /**
+     * Get value
+     *
+     * @return string 
+     */
+    public function getValue()
+    {
+        return $this->value;
+    }
+
+}

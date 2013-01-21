@@ -1,0 +1,19 @@
+user_homepage:
+    pattern: /
+    defaults: { _controller: AdminBundle:User:index }
+
+user_show:
+    pattern: /show/{id}
+    defaults: { _controller: AdminBundle:User:show }    
+
+user_update:
+    pattern: /update/{id}
+    defaults: { _controller: AdminBundle:User:update } 
+
+user_delete:
+    pattern: /delete/{id}
+    defaults: { _controller: AdminBundle:User:delete } 
+    
+user_create:
+    pattern: /create
+    defaults: { _controller: AdminBundle:User:create } 

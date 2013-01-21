@@ -1,6 +1,6 @@
 <?php
 
-namespace Kaan\AppBundle\Tests\Controller;
+namespace Kaan\CoreBundle\Tests\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Test\WebTestCase;
 

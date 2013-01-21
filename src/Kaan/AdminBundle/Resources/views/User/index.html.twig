@@ -1,0 +1,79 @@
+{% extends 'AdminBundle::layout.html.twig' %}
+{% block content %}
+<div class="page-header">
+    <h1 class="pull-left">Users</h1>
+    <div class="pull-right" style="margin-top:15px">
+        <a class="btn btn-large btn-primary" href="{{ path('user_create') }}">
+            <i class="icon-white icon-plus"></i> Create
+        </a>
+    </div>
+    <div class="clearfix"></div>
+    <div class="well">
+        <form style="margin-bottom: 0;" class="form-search">
+            <div class="input-prepend">
+                <div class="btn-group">
+                    <button class="btn dropdown-toggle" data-toggle="dropdown">
+                        Ara
+                        <span class="icon-search"></span>
+                    </button>
+                    <ul class="dropdown-menu">
+                        <li><a href="#" id="email">Email</a></li>
+                        <li><a href="#" id="username">Username</a></li>
+                    </ul>
+                </div>
+                <input type="text" id="searchquery" class="input-medium search-query">
+                </div>
+        </form>
+    </div>
+</div>
+<table class="records_list table table-bordered">
+    <thead>
+        <tr>
+            <th>Name</th>
+            <th>Email</th>
+            <th style="width: 140px">Updatedat</th>
+            <th style="width: 100px">Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+    {% for entity in users %}
+            <tr>
+                <td>{{ entity.username }}</td>
+                <td>{{ entity.email }}</td>
+                <td>{% if entity.createdAt %}{{ entity.createdAt|date('Y-m-d H:i:s') }}{% endif %}</td>
+                <td>
+                    <div class="btn-group">
+                        <a class="btn" href="{{ path('user_show', { 'id': entity.id }) }}">
+                            <i class="icon-eye-open"></i> Show
+                        </a>
+                        <a class="btn btn-primary" href="{{ path('user_update', { 'id': entity.id }) }}">
+                            <i class="icon-white icon-pencil"></i> Edit
+                        </a>
+                    </div>
+                </td>
+            </tr>
+    {% endfor %}
+        </tbody>
+    </table>
+    <div class="pull-right">
+        <div class="pagination">
+    {{ knp_pagination_render(users) }}
+            </div>
+        </div>
+
+{% endblock %}
+{% block javascript %}
+<script>
+    $(document).ready(function(){
+        $('#email').click(function(){
+            var email = $('#searchquery').val();
+            window.location = '{{ path('user_homepage') }}?email='+email;
+        });
+        
+        $('#username').click(function(){
+            var email = $('#searchquery').val();
+            window.location = '{{ path('user_homepage') }}?username='+email;
+        });
+    });
+</script>
+{% endblock %}

@@ -1,0 +1,27 @@
+{% extends 'AdminBundle::layout.html.twig' %}
+{% block content %}
+<div class="page-header">
+    <h1>Attribute</h1>
+</div>
+<table class="record_properties table table-bordered">
+    <tbody>
+        <tr>
+            <th>Name</th>
+            <td>{{ entity.name }}</td>
+        </tr>
+    </tbody>
+</table>
+
+<div class="btn-group pull-right">
+    <a class="btn" href="{{ path('attribute') }}">
+        <i class="icon-circle-arrow-left"></i> Back
+    </a>
+    <a class="btn btn-primary" href="{{ path('attribute_edit', { 'id': entity.id }) }}">
+        <i class="icon-pencil icon-white"></i> Edit
+    </a>
+</div>
+<form action="{{ path('attribute_delete', { 'id': entity.id }) }}" method="post">
+    {{ form_widget(delete_form) }}
+    <button class="btn-danger btn" type="submit">Delete</button>
+</form>
+{% endblock %}

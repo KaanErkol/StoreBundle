@@ -1,0 +1,23 @@
+{% extends 'AdminBundle::layout.html.twig' %}
+{% block content %}
+<div class="page-header">
+    <h1>Adress Creation</h1>
+</div>
+<form action="{{ path('adress_create') }}" method="post" class="form-horizontal" {{ form_enctype(form) }}>
+    {{ form_widget(form,{'form_type': 'horizontal'}) }}
+        <input type="hidden" name="userid" value="{{app.request.get('id')}}">
+  <div class="control-group">
+    <div class="controls">
+      <button type="submit" class="btn">Create</button>
+    </div>
+  </div>
+</form>
+
+<ul class="record_actions unstyled">
+    <li>
+        <a class="btn" href="{{ path('adress',{'id': app.request.get('id')}) }}">
+            <i class="icon-circle-arrow-left"></i> Back to the list
+        </a>
+    </li>
+</ul>
+{% endblock %}

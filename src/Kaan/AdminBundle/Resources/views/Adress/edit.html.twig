@@ -1,0 +1,26 @@
+{% extends 'AdminBundle::layout.html.twig' %}
+{% block content %}
+<div class="page-header">
+    <h1>Adress Edit</h1>
+</div>
+<form action="{{ path('adress_update', { 'id': entity.id }) }}" class="form-horizontal" method="post" {{ form_enctype(edit_form) }}>
+    {{ form_widget(edit_form,{'form_type': 'horizontal'}) }}
+        <input type="hidden" name="userid" value="{{app.request.get('id')}}">
+  <div class="control-group">
+    <div class="controls">
+      <button type="submit" class="btn">Update</button>
+    </div>
+  </div>
+</form>
+<div class="btn-group pull-left">
+    <a class="btn" href="{{ path('adress',{'id': app.request.get('id')}) }}">
+        <i class="icon-circle-arrow-left"></i> Back
+    </a>
+</div>
+
+<form action="{{ path('taxation_delete', { 'id': entity.id }) }}" method="post" class="pull-right">
+    {{ form_widget(delete_form) }}
+        <button class="btn btn-danger" type="submit"><i class="icon-white icon-trash"></i> Delete</button>
+</form>
+
+{% endblock %}

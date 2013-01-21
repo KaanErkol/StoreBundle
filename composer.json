@@ -25,7 +25,8 @@
         "doctrine/doctrine-fixtures-bundle": "dev-master",
         "doctrine/data-fixtures": "1.0.*@dev",
         "braincrafted/bootstrap-bundle": "dev-master",
-        "knplabs/knp-paginator-bundle": "dev-master"
+        "knplabs/knp-paginator-bundle": "dev-master",
+        "beberlei/acme-pizza": "dev-master"
     },
     "scripts": {
         "post-install-cmd": [

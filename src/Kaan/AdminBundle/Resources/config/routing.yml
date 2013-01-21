@@ -13,6 +13,25 @@ shippingcategory:
 zone:
     resource: "@AdminBundle/Resources/config/routing/zone.yml"
     prefix:   /zone
+
 taxation:
     resource: "@AdminBundle/Resources/config/routing/taxation.yml"
     prefix:   /taxation
+
+taxationrate:
+    resource: "@AdminBundle/Resources/config/routing/taxationrate.yml"
+    prefix:   /taxationrate
+user:
+    resource: "@AdminBundle/Resources/config/routing/user.yml"
+    prefix:   /user    
+adress:
+    resource: "@AdminBundle/Resources/config/routing/adress.yml"
+    prefix:   /adress
+
+attribute:
+    resource: "@AdminBundle/Resources/config/routing/attribute.yml"
+    prefix:   /attribute
+    
+option:
+    resource: "@AdminBundle/Resources/config/routing/option.yml"
+    prefix:   /option

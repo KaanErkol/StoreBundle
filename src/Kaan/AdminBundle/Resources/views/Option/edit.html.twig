@@ -1,0 +1,115 @@
+{% extends 'AdminBundle::layout.html.twig' %}
+{% block content %}
+<div class="page-header">
+    <h1>Option Edit</h1>
+</div>
+<form action="{{ path('option_update', { 'id': entity.id }) }}" class="form-horizontal" method="post" {{ form_enctype(edit_form) }}>
+{{ form_widget(edit_form._token) }} 
+        <input name="optionid" value="{{entity.id}}" type="hidden"> 
+    <div class="control-group">
+        {{ form_label(edit_form.name, label|default(null), { 'label_attr': { 'class': 'control-label' } }) }}
+        <div class="controls">
+            {{ form_widget(edit_form.name) }}
+        </div>
+    </div>
+    <div class="control-group">
+        {{ form_label(edit_form.presentation, label|default(null), { 'label_attr': { 'class': 'control-label' } }) }}
+        <div class="controls">
+            {{ form_widget(edit_form.presentation) }}
+        </div>
+    </div>
+
+    <div class="control-group">
+        <div class="controls">
+            <ul class="unstyled child" data-prototype="{{ form_widget(edit_form.child.vars.prototype)|e }}">
+                {% for val in edit_form.child %}
+                    <li style="margin-bottom: 5px;">Value :{{ form_widget(val.value) }}</li>
+                {% endfor %}
+            </ul>
+        </div>
+    </div>
+
+
+        <div class="control-group">
+            <div class="controls">
+                <button type="submit" class="btn">Update</button>
+            </div>
+        </div>
+    </form>
+    <div class="btn-group pull-left">
+        <a class="btn" href="{{ path('option') }}">
+            <i class="icon-circle-arrow-left"></i> Back
+        </a>
+    </div>
+
+    <form action="{{ path('option_delete', { 'id': entity.id }) }}" method="post" class="pull-right">
+        {{ form_widget(delete_form) }}
+        <button class="btn btn-danger" type="submit"><i class="icon-white icon-trash"></i> Delete</button>
+    </form>
+
+{% endblock %}
+{% block javascript %}
+<script>
+// Get the div that holds the collection of tags
+var collectionHolder = $('ul.child');
+
+// setup an "add a tag" link
+var $addTagLink = $('<a href="#" class="add_tag_link btn btn-success">Add a Value</a>');
+var $newLinkLi = $('<li></li>').append($addTagLink);
+
+jQuery(document).ready(function() {
+    // add a delete link to all of the existing tag form li elements
+    collectionHolder.find('li').each(function() {
+        addTagFormDeleteLink($(this));
+    });
+    // add the "add a tag" anchor and li to the tags ul
+    collectionHolder.append($newLinkLi);
+
+    // count the current form inputs we have (e.g. 2), use that as the new
+    // index when inserting a new item (e.g. 2)
+    collectionHolder.data('index', collectionHolder.find(':input').length);
+
+    $addTagLink.on('click', function(e) {
+        // prevent the link from creating a "#" on the URL
+        e.preventDefault();
+
+        // add a new tag form (see next code block)
+        addTagForm(collectionHolder, $newLinkLi);
+    });
+    
+});
+function addTagForm(collectionHolder, $newLinkLi) {
+    // Get the data-prototype explained earlier
+    var prototype = collectionHolder.data('prototype');
+
+    // get the new index
+    var index = collectionHolder.data('index');
+
+    // Replace '__name__' in the prototype's HTML to
+    // instead be a number based on how many items we have
+    var newForm = prototype.replace(/__name__/g, index);
+
+    // increase the index with one for the next item
+    collectionHolder.data('index', index + 1);
+
+    // Display the form in the page in an li, before the "Add a tag" link li
+    var $newFormLi = $('<li></li>').append(newForm);
+    $newLinkLi.before($newFormLi);
+    // add a delete link to the new form
+    addTagFormDeleteLink($newFormLi);
+}
+function addTagFormDeleteLink($tagFormLi) {
+    var $removeFormA = $('<a href="#" class="btn btn-danger btn-mini">X</a>');
+    $tagFormLi.append($removeFormA);
+
+    $removeFormA.on('click', function(e) {
+        // prevent the link from creating a "#" on the URL
+        e.preventDefault();
+
+        // remove the li for the tag form
+        $tagFormLi.remove();
+    });
+}
+
+</script>
+{% endblock %}

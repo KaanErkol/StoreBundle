@@ -1,0 +1,30 @@
+adress:
+    pattern:  /user/{id}
+    defaults: { _controller: "AdminBundle:Adress:index" }
+
+adress_show:
+    pattern:  /{id}/show
+    defaults: { _controller: "AdminBundle:Adress:show" }
+
+adress_new:
+    pattern:  /new
+    defaults: { _controller: "AdminBundle:Adress:new" }
+
+adress_create:
+    pattern:  /create
+    defaults: { _controller: "AdminBundle:Adress:create" }
+    requirements: { _method: post }
+
+adress_edit:
+    pattern:  /{id}/edit
+    defaults: { _controller: "AdminBundle:Adress:edit" }
+
+adress_update:
+    pattern:  /{id}/update
+    defaults: { _controller: "AdminBundle:Adress:update" }
+    requirements: { _method: post }
+
+adress_delete:
+    pattern:  /{id}/delete
+    defaults: { _controller: "AdminBundle:Adress:delete" }
+    requirements: { _method: post }

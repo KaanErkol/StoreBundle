@@ -1,0 +1,22 @@
+{% extends 'AdminBundle::layout.html.twig' %}
+{% block content %}
+<div class="page-header">
+    <h1>Taxation Rate Creation</h1>
+</div>
+<form action="{{ path('taxationrate_create') }}" method="post" class="form-horizontal" {{ form_enctype(form) }}>
+    {{ form_widget(form,{'form_type': 'horizontal'}) }}
+  <div class="control-group">
+    <div class="controls">
+      <button type="submit" class="btn">Create</button>
+    </div>
+  </div>
+</form>
+
+<ul class="record_actions unstyled">
+    <li>
+        <a class="btn" href="{{ path('taxationrate_homepage') }}">
+            <i class="icon-circle-arrow-left"></i> Back to the list
+        </a>
+    </li>
+</ul>
+{% endblock %}
