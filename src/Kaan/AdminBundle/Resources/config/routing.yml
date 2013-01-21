@@ -35,3 +35,6 @@ attribute:
 option:
     resource: "@AdminBundle/Resources/config/routing/option.yml"
     prefix:   /option
+product:
+    resource: "@AdminBundle/Resources/config/routing/product.yml"
+    prefix:   /product

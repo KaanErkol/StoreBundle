@@ -16,6 +16,8 @@ class Builder extends ContainerAware {
         $Category->addChild('List Category',array('route' => 'taxonomies_homepage'));
         
         $assortment = $menu->addChild('Assortment');
+        $assortment->addChild('Products',array('route' => 'product'));
+        $assortment->addChild('d1', array('attributes' => array('divider' => true)));
         $assortment->addChild('Manage Option',array('route' => 'option'));
         
         $user = $menu->addChild('User');

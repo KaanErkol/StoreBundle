@@ -1,0 +1,17 @@
+product:
+    pattern: /
+    defaults: { _controller: AdminBundle:Product:index }
+    
+product_create:
+    pattern: /create
+    defaults: { _controller: AdminBundle:Product:create }
+
+product_show:
+    pattern: /show/{id}
+    defaults: { _controller: AdminBundle:Product:show }
+
+product_delete:
+    pattern: /delete/{id}
+    defaults: { _controller: AdminBundle:Product:delete }
+    requirements:
+        _format: POST
