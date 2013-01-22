@@ -19,3 +19,16 @@ product_delete:
 product_update:
     pattern: /update/{id}
     defaults: { _controller: AdminBundle:Product:update }
+    
+product_variant_generate:
+    pattern: /variantGenerate/{id}
+    defaults: { _controller: AdminBundle:Product:generateVariant }
+
+product_variant_show:
+    pattern: /variantShow/{id}
+    defaults: { _controller: AdminBundle:Product:variantShow } 
+    
+product_variant_delete:
+    pattern: /variantdelete/{id}
+    defaults: { _controller: AdminBundle:Product:variantdelete } 
+    

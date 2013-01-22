@@ -19,23 +19,23 @@ class Product
     protected $id;
 
     /**
-     * @ORM\Column(type="string",length=255)
+     * @ORM\Column(type="string",length=255,nullable=TRUE)
      * @var string $name
      */
     protected $name;
     /**
-     * @ORM\Column(type="text")
+     * @ORM\Column(type="text",nullable=TRUE)
      * @var text $description;
      */
     protected $description;
     /**
-     * @ORM\Column(type="string",length=255)
+     * @ORM\Column(type="string",length=255,nullable=TRUE)
      * @var string $permalink
      */
     protected $permalink;
     
     /**
-     * @ORM\Column(type="string",length=255,unique=TRUE)
+     * @ORM\Column(type="string",length=255,unique=TRUE,nullable=TRUE)
      * 
      * @var string
      */
@@ -48,6 +48,13 @@ class Product
      */
     protected $avaibleOn;
     
+    /**
+     * @ORM\Column(type="boolean",nullable=TRUE)
+     * @var boolean
+     */
+    protected $avaible;
+
+
     /**
      * @ORM\Column(type="string",length=50)
      * 
@@ -86,7 +93,7 @@ class Product
     protected $taxationCategory;
     
     /**
-     * @ORM\Column(type="integer")
+     * @ORM\Column(type="integer",nullable=TRUE)
      * 
      * @var integer
      */
@@ -118,7 +125,40 @@ class Product
     /**
      * @ORM\OneToMany(targetEntity="ProductAttribute", mappedBy="product",cascade={"persist"})
      */
-    protected  $attribute;
+    protected $attribute;
+    
+    /**
+     * @ORM\Column(type="integer")
+     * 
+     * @var integer
+     */
+    protected $type;
+    
+    /**
+     * @ORM\ManyToOne(targetEntity="Product", inversedBy="product");
+     * @ORM\JoinColumn(name="parent_id", referencedColumnName="id", nullable=TRUE)
+     * 
+     * @var get parent product
+     */
+    protected $parentProduct;
+    
+    /**
+     * @ORM\OneToMany(targetEntity="Product", mappedBy="parentProduct")
+     * 
+     * @var array
+     */
+    protected $children;
+    
+    /**
+     * @ORM\ManyToMany(targetEntity="OptionValue");
+     * @ORM\JoinTable(name="product_variant_option",
+     *     joinColumns={@ORM\JoinColumn(name="variant_id", referencedColumnName="id")},
+     *     inverseJoinColumns={@ORM\JoinColumn(name="optionvalue_id", referencedColumnName="id")}
+     * )
+     * 
+     * @var array
+     */
+    protected $variantOptions;
 
     /**
      * Constructor
@@ -511,5 +551,140 @@ class Product
     public function removeTaxonomie(\Kaan\CoreBundle\Entity\Taxonomies $taxonomies)
     {
         $this->taxonomies->removeElement($taxonomies);
+    }
+
+    /**
+     * Set type
+     *
+     * @param integer $type
+     * @return Product
+     */
+    public function setType($type)
+    {
+        $this->type = $type;
+    
+        return $this;
+    }
+
+    /**
+     * Get type
+     *
+     * @return integer 
+     */
+    public function getType()
+    {
+        return $this->type;
+    }
+
+    /**
+     * Set parentProduct
+     *
+     * @param \Kaan\CoreBundle\Entity\Product $parentProduct
+     * @return Product
+     */
+    public function setParentProduct(\Kaan\CoreBundle\Entity\Product $parentProduct = null)
+    {
+        $this->parentProduct = $parentProduct;
+    
+        return $this;
+    }
+
+    /**
+     * Get parentProduct
+     *
+     * @return \Kaan\CoreBundle\Entity\Product 
+     */
+    public function getParentProduct()
+    {
+        return $this->parentProduct;
+    }
+
+    /**
+     * Add children
+     *
+     * @param \Kaan\CoreBundle\Entity\Product $children
+     * @return Product
+     */
+    public function addChildren(\Kaan\CoreBundle\Entity\Product $children)
+    {
+        $this->children[] = $children;
+    
+        return $this;
+    }
+
+    /**
+     * Remove children
+     *
+     * @param \Kaan\CoreBundle\Entity\Product $children
+     */
+    public function removeChildren(\Kaan\CoreBundle\Entity\Product $children)
+    {
+        $this->children->removeElement($children);
+    }
+
+    /**
+     * Get children
+     *
+     * @return \Doctrine\Common\Collections\Collection 
+     */
+    public function getChildren()
+    {
+        return $this->children;
+    }
+
+    /**
+     * Set avaible
+     *
+     * @param boolean $avaible
+     * @return Product
+     */
+    public function setAvaible($avaible)
+    {
+        $this->avaible = $avaible;
+    
+        return $this;
+    }
+
+    /**
+     * Get avaible
+     *
+     * @return boolean 
+     */
+    public function getAvaible()
+    {
+        return $this->avaible;
+    }
+
+    /**
+     * Add variantOptions
+     *
+     * @param \Kaan\CoreBundle\Entity\OptionValue $variantOptions
+     * @return Product
+     */
+    public function addVariantOption(\Kaan\CoreBundle\Entity\OptionValue $variantOptions)
+    {
+        $this->variantOptions[] = $variantOptions;
+    
+        return $this;
+    }
+
+    /**
+     * Remove variantOptions
+     *
+     * @param \Kaan\CoreBundle\Entity\OptionValue $variantOptions
+     */
+    public function removeVariantOption(\Kaan\CoreBundle\Entity\OptionValue $variantOptions)
+    {
+        $this->variantOptions->removeElement($variantOptions);
+    }
+
+    /**
+     * Get variantOptions
+     *
+     * @return \Doctrine\Common\Collections\Collection 
+     */
+    public function getVariantOptions()
+    {
+        return $this->variantOptions;
     }
 }

@@ -3,9 +3,12 @@
 {% spaceless %}
     {% for tax in taxonomies %}
         <option {% for test in entity.taxonomies %}
-                                            {% if tax.id== test.id %}selected="true"{%endif%}
-                                        {% endfor %} value="{{ tax.id }}">{{ tax.title }}</option>
-        {{ _self.taxonomi(tax.children) }}
+              {% if tax.id== test.id %}selected="true"{%endif%}
+        {% endfor %} 
+            value="{{ tax.id }}">{{ tax.title }}</option>
+    {% if tax.children %}    
+    {{ _self.taxonomi(tax.children,entity) }}
+    {% endif %}
     {% endfor %}
 {% endspaceless %}
 {% endmacro %}
@@ -58,6 +61,12 @@
                         {{ form_widget(form.avaibleOn) }}
                     </div>
                 </div>                    
+                <div class="control-group">
+                    {{ form_label(form.avaible) }}
+                    <div class="controls">
+                        {{ form_widget(form.avaible) }}
+                    </div>
+                </div>    
                 <div class="control-group">
                     {{ form_label(form.price) }}
                     <div class="controls">
@@ -120,7 +129,9 @@
                                     <option {% for test in entity.taxonomies %}
                                             {% if sub.id== test.id %}selected="true"{%endif%}
                                         {% endfor %} value="{{ sub.id }}">{{ sub.title }}</option>
-                                    {{ _self.taxonomi(sub.children,entity) }}
+                                        {% if tax.children %}    
+                                        {{ _self.taxonomi(sub.children,entity) }}
+                                        {% endif %}
                                 {% endfor %}
                             </select>
                         </div>

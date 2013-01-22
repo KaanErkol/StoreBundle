@@ -119,4 +119,8 @@ class ShippingCategory
     {
         return $this->createdAt;
     }
+    
+    public function __toString() {
+        return $this->getName();
+    }
 }

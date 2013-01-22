@@ -43,6 +43,11 @@ class ProductType extends AbstractType {
                         'class' => 'control-label'
                     )
                 ))
+                ->add('avaible', null, array(
+                    'label_attr' => array(
+                        'class' => 'control-label'
+                    )
+                ))
                 ->add('price', 'text', array(
                     'label_attr' => array(
                         'class' => 'control-label'

@@ -87,4 +87,7 @@ class Attribute
     {
         return $this->attr_group;
     }
+    public function __toString() {
+        return $this->getName();
+    }
 }

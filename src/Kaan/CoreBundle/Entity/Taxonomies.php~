@@ -206,5 +206,7 @@ class Taxonomies {
     public function getIndentedTitle() {
         return str_repeat("-- ", $this->lvl) . $this->title;
     }
-
+    public function __toString() {
+        return $this->getTitle();
+    }
 }

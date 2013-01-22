@@ -2,11 +2,6 @@ admin:
     resource: "@AdminBundle/Resources/config/routing.yml"
     prefix:   /admin
 
-AcmePizzaBundle:
-    resource: "@AcmePizzaBundle/Controller/"
-    type:     annotation
-    prefix:   /acme-pizza    
-
 security:
     resource: "@UserBundle/Resources/config/routing.yml"
 

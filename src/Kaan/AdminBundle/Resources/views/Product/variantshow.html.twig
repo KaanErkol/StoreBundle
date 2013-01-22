@@ -1,0 +1,113 @@
+{% extends 'AdminBundle::layout.html.twig' %}
+{% block content %}
+<div class="page-header">
+    <h1>Product "{{ product.name }}"</h1>
+    <div class="clearfix"></div>
+</div>
+<form method="post" action="{{ path('product_variant_show',{'id':product.id}) }}">
+    {{ form_widget(form._token) }} 
+<table class="table table-bordered">
+    <thead>
+        <tr>
+            <th>SKU</th>
+            <th>Avaible Date</th>
+            <th>Option Set</th>
+            <th>Price</th>
+            <th>Stock</th>
+            <th style="width: 10px"></th>
+            <th>Shipping</th>
+            <th>Action</th>
+        </tr>
+    </thead>
+    <tbody class="child">
+        {% for val in form.children %}
+        <tr>
+            <td>{{ form_widget(val.sku) }}</td>
+            <td>{{ form_widget(val.avaibleOn) }}</td>
+            <td>
+ 
+            </td>
+            <td>{{ form_widget(val.price) }}</td>
+            <td>{{ form_widget(val.stock) }}</td>
+            <td>{{ form_widget(val.avaible) }}</td>
+            <td>{{ form_widget(val.shippingCategory) }}</td>
+            <td>
+
+            </td>
+        </tr>        
+        {% endfor %}
+    </tbody>
+</table>
+    <div class="clearfix"></div>
+    <div class="btn-group">
+        <button type="submit" class="btn btn-primary"><i class="icon-plus icon-white"></i> Update</button>
+        <a href="{{ path('product') }}" class="btn"><i class="icon-circle-arrow-left"></i> Back</a>
+    </div>
+</form>
+{% endblock %}
+{% block javascript %}
+<script>
+// Get the div that holds the collection of tags
+var collectionHolder = $('tbody.child');
+
+// setup an "add a tag" link
+var $addTagLink = $('<a href="#" class="add_tag_link btn btn-success" style="margin-top:10px">Add a Value</a>');
+var $newLinkLi = $('<tr></tr>').append($addTagLink);
+
+jQuery(document).ready(function() {
+    // add a delete link to all of the existing tag form li elements
+    collectionHolder.find('tr').each(function() {
+        addTagFormDeleteLink($(this));
+    });
+    // add the "add a tag" anchor and li to the tags ul
+   
+
+    // count the current form inputs we have (e.g. 2), use that as the new
+    // index when inserting a new item (e.g. 2)
+    collectionHolder.data('index', collectionHolder.find(':input').length);
+
+    $addTagLink.on('click', function(e) {
+        // prevent the link from creating a "#" on the URL
+        e.preventDefault();
+
+        // add a new tag form (see next code block)
+        addTagForm(collectionHolder, $newLinkLi);
+    });
+    
+});
+function addTagForm(collectionHolder, $newLinkLi) {
+    // Get the data-prototype explained earlier
+    var prototype = collectionHolder.data('prototype');
+
+    // get the new index
+    var index = collectionHolder.data('index');
+
+    // Replace '__name__' in the prototype's HTML to
+    // instead be a number based on how many items we have
+    var newForm = prototype.replace(/__name__/g, index);
+
+    // increase the index with one for the next item
+    collectionHolder.data('index', index + 1);
+
+    // Display the form in the page in an li, before the "Add a tag" link li
+    var $newFormLi = $('<tr></tr>').append(newForm);
+    $newLinkLi.before($newFormLi);
+    // add a delete link to the new form
+    addTagFormDeleteLink($newFormLi);
+    $('.chosen').chosen({allow_single_deselect:true});
+}
+function addTagFormDeleteLink($tagFormLi) {
+    var $removeFormA = $('<a href="#" class="btn btn-danger btn-mini" style="margin-top:30px;">X</a>');
+    $tagFormLi.append($removeFormA);
+
+    $removeFormA.on('click', function(e) {
+        // prevent the link from creating a "#" on the URL
+        e.preventDefault();
+
+        // remove the li for the tag form
+        $tagFormLi.remove();
+    });
+}
+
+</script>
+{% endblock %}
