@@ -143,14 +143,14 @@ class Product
     protected $parentProduct;
     
     /**
-     * @ORM\OneToMany(targetEntity="Product", mappedBy="parentProduct")
+     * @ORM\OneToMany(targetEntity="Product", mappedBy="parentProduct" ,cascade={"persist"})
      * 
      * @var array
      */
     protected $children;
     
     /**
-     * @ORM\ManyToMany(targetEntity="OptionValue");
+     * @ORM\ManyToMany(targetEntity="OptionValue",cascade={"all"});
      * @ORM\JoinTable(name="product_variant_option",
      *     joinColumns={@ORM\JoinColumn(name="variant_id", referencedColumnName="id")},
      *     inverseJoinColumns={@ORM\JoinColumn(name="optionvalue_id", referencedColumnName="id")}

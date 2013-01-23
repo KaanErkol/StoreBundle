@@ -49,12 +49,6 @@ class VariantType extends AbstractType {
                         'class' => 'control-label'
                     )
                 ))
-                ->add('variantOptions','collection',array(
-                    'type' => new VariantValueType(),
-                    'allow_add' => true,
-                    'allow_delete' => true,
-                    'by_reference' => true,
-                ))
         ;
     }
 

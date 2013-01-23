@@ -2,3 +2,7 @@ parameters:
 
 
 services:
+    kaan.twig.stok_extension:
+        class: Kaan\AdminBundle\Twig\ProductExtension
+        tags:
+            - { name: twig.extension }

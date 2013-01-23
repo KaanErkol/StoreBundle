@@ -5,6 +5,7 @@
     <div class="clearfix"></div>
 </div>
 <form method="post" action="{{ path('product_variant_show',{'id':product.id}) }}">
+    {{ form_errors(form) }}
     {{ form_widget(form._token) }} 
 <table class="table table-bordered">
     <thead>
@@ -25,7 +26,7 @@
             <td>{{ form_widget(val.sku) }}</td>
             <td>{{ form_widget(val.avaibleOn) }}</td>
             <td>
-                {{ form_widget(val.variantOptions) }} 
+                {% render 'AdminBundle:Product:VariantValue' with {'id': val.vars.value.id } %}
             </td>
             <td>{{ form_widget(val.price) }}</td>
             <td>{{ form_widget(val.stock) }}</td>

@@ -151,6 +151,7 @@ class ProductController extends Controller {
 
                 $em->persist($product);
                 $em->flush();
+                return $this->redirect($this->generateUrl('product_show',array('id'=>$product->getId())));
             }
         }
 
@@ -326,9 +327,10 @@ class ProductController extends Controller {
                     
                     $em->persist($test);
                 }
-                
+
                 $em->persist($product);
                 $em->flush();
+                return $this->redirect($this->generateUrl('product_show',array('id' =>$product->getId())));
 
             }
         }
@@ -350,6 +352,19 @@ class ProductController extends Controller {
         $em->remove($find);
         $em->flush();
         return $this->redirect($this->generateUrl('product_show',array('id' => $parentid)));
+    }
+    
+    public function VariantValueAction($id){
+        $em = $this->getDoctrine()->getEntityManager();
+        $product = $em->getRepository('CoreBundle:Product')->find($id);
+        $parentProduct = $product->getParentProduct();
+        $response = '<ul>';
+        foreach($product->getVariantOptions() as $vo){
+            $response .= '<li><strong>'.$vo->getOption().'</strong>:'.$vo->getValue().'</li>';
+        }
+        $response .= '</ul>';
+        return new Response($response);
+        
     }
 
 }
