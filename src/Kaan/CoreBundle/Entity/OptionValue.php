@@ -91,7 +91,6 @@ class OptionValue {
     }
 
     public function addOption(Option $option) {
-        die();
         if (!$this->option->contains($option)) {
             $this->option->add($option);
         }

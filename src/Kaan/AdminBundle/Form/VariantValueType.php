@@ -15,8 +15,12 @@ class VariantValueType extends AbstractType {
 
 
         $builder
-                ->add('value')
-                ->add('option')
+                ->add('value',null,array(
+                    'disabled' => TRUE
+                ))
+                ->add('option',null,array(
+                    'disabled' => TRUE
+                ))
         ;
     }
 

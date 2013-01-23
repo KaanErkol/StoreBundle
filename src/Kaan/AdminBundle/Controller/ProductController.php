@@ -321,15 +321,15 @@ class ProductController extends Controller {
                     $em->remove($test);
                 }
 
-                
-                
                 foreach ($product->getChildren() as $test) {
                     $test->setParentProduct($product);
+                    
                     $em->persist($test);
                 }
                 
                 $em->persist($product);
                 $em->flush();
+
             }
         }
         
@@ -349,7 +349,7 @@ class ProductController extends Controller {
         $parentid = $find->getParentProduct()->getId();
         $em->remove($find);
         $em->flush();
-        return $this->redirect($this->generateUrl('product_variant_create',array('id' => $parentid)));
+        return $this->redirect($this->generateUrl('product_show',array('id' => $parentid)));
     }
 
 }
