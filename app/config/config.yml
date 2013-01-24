@@ -22,15 +22,13 @@ framework:
 twig:
     debug:            "%kernel.debug%"
     strict_variables: "%kernel.debug%"
-    form:
-        resources:
-            - "BraincraftedBootstrapBundle:Form:form_div_layout.html.twig"
+
 
 # Assetic Configuration
 assetic:
     debug:          "%kernel.debug%"
     use_controller: false
-    bundles:        [ AdminBundle ]
+    bundles:        [ AdminBundle,MopaBootstrapBundle ]
     #java: /usr/bin/java
     filters:
         cssrewrite: ~
@@ -63,10 +61,23 @@ swiftmailer:
     password:  "%mailer_password%"
     spool:     { type: memory }
 
-knp_menu:
-   twig:
-       template: "BraincraftedBootstrapBundle:Menu:menu.html.twig"
-       
+mopa_bootstrap:
+    form:
+        show_legend: false # default is true
+        show_child_legend: false # default is true
+        error_type: block # or inline which is default
+        collection:
+            widget_remove_btn:
+                attr:
+                    class: btn
+                icon: null
+                icon_color: null
+            widget_add_btn:
+                attr:
+                    class: btn
+                icon: null
+                icon_color: null
+    navbar: ~
 stof_doctrine_extensions:
     orm:
         default:

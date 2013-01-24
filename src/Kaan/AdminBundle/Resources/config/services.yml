@@ -1,8 +1,33 @@
-parameters:
-
-
 services:
-    kaan.twig.stok_extension:
-        class: Kaan\AdminBundle\Twig\ProductExtension
+    sternenbund.navbar:
+        class: '%mopa_bootstrap.navbar.generic%'
+        scope: request
+        arguments:
+            - { leftmenu: '@sternenbund.navbar_main_menu=', rightmenu: '@sternenbund.navbar_right_menu='}
+            - {}
+            - { title: "Sternenbund", titleRoute: "admin_homepage", fixedTop: false, isFluid: true }
         tags:
-            - { name: twig.extension }
+            - { name: mopa_bootstrap.navbar, alias: frontendNavbar }
+
+    sternenbund.navbar_menu_builder:
+        class: Kaan\AdminBundle\Menu\NavbarMenuBuilder
+        scope: request
+        arguments: [ '@knp_menu.factory', '@security.context' ]
+
+    sternenbund.navbar_main_menu:
+        class: Knp\Menu\MenuItem
+        factory_service: sternenbund.navbar_menu_builder
+        factory_method: createMainMenu
+        arguments: [ '@request' ]
+        scope: request
+        tags:
+            - { name: knp_menu.menu, alias: main }
+
+    sternenbund.navbar_right_menu:
+        class: Knp\Menu\MenuItem
+        factory_service: sternenbund.navbar_menu_builder
+        factory_method: createRightSideDropdownMenu
+        arguments: [ '@request' ]
+        scope: request
+        tags:
+            - { name: knp_menu.menu, alias: main }

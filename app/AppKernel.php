@@ -21,11 +21,12 @@ class AppKernel extends Kernel
             new JMS\SecurityExtraBundle\JMSSecurityExtraBundle(),
             new Knp\Bundle\MenuBundle\KnpMenuBundle(),
             new \Stof\DoctrineExtensionsBundle\StofDoctrineExtensionsBundle(),
-            new Braincrafted\BootstrapBundle\BraincraftedBootstrapBundle(),
             new Doctrine\Bundle\FixturesBundle\DoctrineFixturesBundle(),
             new Knp\Bundle\PaginatorBundle\KnpPaginatorBundle,
             new Kaan\UserBundle\UserBundle(),
             new Kaan\CoreBundle\CoreBundle(),
+            new Craue\FormFlowBundle\CraueFormFlowBundle(),
+            new Mopa\Bundle\BootstrapBundle\MopaBootstrapBundle(),
             new Kaan\AdminBundle\AdminBundle(),
         );
 
