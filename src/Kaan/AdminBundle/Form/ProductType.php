@@ -91,9 +91,8 @@ class ProductType extends AbstractType {
                     'type' => new ProductAttributeType(),
                     'allow_add' => true,
                     'allow_delete' => true,
-                    'by_reference' => true,
-                        )
-                )
+                    'by_reference' => true
+                ))
         ;
     }
 

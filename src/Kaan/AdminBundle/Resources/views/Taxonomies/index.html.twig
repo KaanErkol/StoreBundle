@@ -1,10 +1,10 @@
 {% extends 'AdminBundle::layout.html.twig' %}
 {% block content %}
 <div class="page-header">
-    <h1 class="pull-left">Taxonomies Category</h1>
+    <h1 class="pull-left">{% trans %}Taxonomies Category{% endtrans %}</h1>
     <div class="pull-right" style="margin-top:15px">
     <a class="btn btn-large btn-primary" href="{{ path('taxonomies_create') }}">
-        <i class="icon-white icon-plus"></i> Create
+        <i class="icon-white icon-plus"></i> {% trans %}Create{% endtrans %}
     </a>
     </div>
     <div class="clearfix"></div>
@@ -13,9 +13,9 @@
 <table class="table table-bordered">
     <thead>
         <tr>
-            <th>Name</th>
-            <th>terms</th>
-            <th width="100">Actions</th>
+            <th>{% trans %}Name{% endtrans %}</th>
+            <th>{% trans %}terms{% endtrans %}</th>
+            <th width="100">{% trans %}Actions{% endtrans %}</th>
         </tr>
     </thead>
     <tbody>

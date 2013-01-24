@@ -9,10 +9,10 @@
     <td>
      <div class="btn-group">
          <a class="btn btn-primary btn-mini" href="{{ path('taxonomies_update',{'id':tax.id}) }}">
-             <i class="icon-pencil icon-white"></i> Edit
+             <i class="icon-pencil icon-white"></i> {% trans %}Edit{% endtrans %}
          </a>
          <a class="btn btn-danger btn-mini" href="{{ path('taxonomies_delete',{'id':tax.id}) }}">
-             <i class="icon-trash icon-white"></i> Delete
+             <i class="icon-trash icon-white"></i> {% trans %}Delete{% endtrans %}
          </a>
       </div>   
     </td>

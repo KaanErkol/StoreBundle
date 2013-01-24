@@ -26,10 +26,9 @@
 </div>
 
 {% block foot_script %}
+
 {%- javascripts
     'http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js'
-    '@AdminBundle/Resources/public/js/bootstrap.min.js'
-    '@MopaBootstrapBundle/Resources/public/js/mopabootstrap-collection.js'
     '@AdminBundle/Resources/public/js/*'
 %}
 <script type="text/javascript" src="{{ asset_url }}"></script>

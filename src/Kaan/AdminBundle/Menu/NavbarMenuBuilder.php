@@ -6,17 +6,19 @@ use Knp\Menu\FactoryInterface;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Security\Core\SecurityContextInterface;
 use Mopa\Bundle\BootstrapBundle\Navbar\AbstractNavbarMenuBuilder;
-
+use Symfony\Bundle\FrameworkBundle\Translation\Translator;
 class NavbarMenuBuilder extends AbstractNavbarMenuBuilder {
 
     protected $securityContext;
     protected $isLoggedIn;
+    protected $translator;
 
-    public function __construct(FactoryInterface $factory, SecurityContextInterface $securityContext) {
+    public function __construct(FactoryInterface $factory, Translator $translator,SecurityContextInterface $securityContext) {
         parent::__construct($factory);
 
         $this->securityContext = $securityContext;
         $this->isLoggedIn = $this->securityContext->isGranted('IS_AUTHENTICATED_FULLY');
+        $this->translator = $translator;
     }
 
     public function createMainMenu(Request $request) {

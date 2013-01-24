@@ -28,6 +28,7 @@ class AppKernel extends Kernel
             new Craue\FormFlowBundle\CraueFormFlowBundle(),
             new Mopa\Bundle\BootstrapBundle\MopaBootstrapBundle(),
             new Kaan\AdminBundle\AdminBundle(),
+            new SimpleThings\FormExtraBundle\SimpleThingsFormExtraBundle(),
         );
 
         if (in_array($this->getEnvironment(), array('dev', 'test'))) {

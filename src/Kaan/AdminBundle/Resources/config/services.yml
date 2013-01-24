@@ -31,3 +31,7 @@ services:
         scope: request
         tags:
             - { name: knp_menu.menu, alias: main }
+    acme.twig.acme_extension:
+        class: Kaan\AdminBundle\Twig\ProductExtension
+        tags:
+            - { name: twig.extension }

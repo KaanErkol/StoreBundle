@@ -1,11 +1,11 @@
 {% extends 'AdminBundle::layout.html.twig' %}
 {% block content %}
 <form action="{{ path('taxonomies_create') }}" method="post" class="form-horizontal">
-  <legend>Category Create</legend>
+  <legend>{% trans %}Category Create{% endtrans %}</legend>
   {{ form_widget(form, {'form_type': 'horizontal'}) }}
   <div class="control-group">
     <div class="controls">
-      <button type="submit" class="btn">Create</button>
+      <button type="submit" class="btn">{% trans %}Create{% endtrans %}</button>
     </div>
   </div>
 </form>

@@ -1,5 +1,5 @@
 {
-    "hash": "ebebc30cdfe43df55d73e97f11bdaac9",
+    "hash": "3f85d67eee903cfe27d6e0ced7ee7f67",
     "packages": [
         {
             "name": "beberlei/acme-pizza",
@@ -1438,6 +1438,54 @@
             "description": "This bundle generates code for you"
         },
         {
+            "name": "simplethings/form-extra-bundle",
+            "version": "dev-master",
+            "target-dir": "SimpleThings/FormExtraBundle",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/simplethings/SimpleThingsFormExtraBundle.git",
+                "reference": "8277e90a2a23e7505696ce7fce8d66705f6973f1"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://github.com/simplethings/SimpleThingsFormExtraBundle/archive/8277e90a2a23e7505696ce7fce8d66705f6973f1.zip",
+                "reference": "8277e90a2a23e7505696ce7fce8d66705f6973f1",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.3.0",
+                "symfony/symfony": ">=2.0"
+            },
+            "time": "2013-01-01 17:35:10",
+            "type": "symfony-bundle",
+            "autoload": {
+                "psr-0": {
+                    "SimpleThings\\FormExtraBundle\\": ""
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Benjamin Eberlei",
+                    "email": "kontakt@beberlei.de"
+                },
+                {
+                    "name": "Henrik Bjørnskov",
+                    "email": "henrik@bjrnskov.dk",
+                    "homepage": "http://henrik.bjrnskov.dk"
+                }
+            ],
+            "description": "This bundles provides extra FormType's for Symfony2",
+            "keywords": [
+                "Symfony2",
+                "form",
+                "recaptcha"
+            ]
+        },
+        {
             "name": "stof/doctrine-extensions-bundle",
             "version": "dev-master",
             "target-dir": "Stof/DoctrineExtensionsBundle",
@@ -1958,6 +2006,7 @@
         "twitter/bootstrap": 20,
         "craue/formflow-bundle": 20,
         "mopa/composer-bridge": 20,
-        "jlong/sass-twitter-bootstrap": 20
+        "jlong/sass-twitter-bootstrap": 20,
+        "simplethings/form-extra-bundle": 20
     }
 }

@@ -5,8 +5,8 @@
   {{ form_widget(form, {'form_type': 'horizontal'}) }}
   <div class="control-group">
     <div class="controls">
-      <button type="submit" class="btn btn-primary">Update</button>
-      <a href="{{ path('taxonomies_homepage') }}" class="btn">Cancel</a>
+      <button type="submit" class="btn btn-primary">{% trans %}Update{% endtrans %}</button>
+      <a href="{{ path('taxonomies_homepage') }}" class="btn">{% trans %}Cancel{% endtrans %}</a>
     </div>
   </div>
 </form>

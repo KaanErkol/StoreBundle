@@ -23,7 +23,6 @@ twig:
     debug:            "%kernel.debug%"
     strict_variables: "%kernel.debug%"
 
-
 # Assetic Configuration
 assetic:
     debug:          "%kernel.debug%"
@@ -70,12 +69,12 @@ mopa_bootstrap:
             widget_remove_btn:
                 attr:
                     class: btn
-                icon: null
+                icon: trash
                 icon_color: null
             widget_add_btn:
                 attr:
                     class: btn
-                icon: null
+                icon: plus
                 icon_color: null
     navbar: ~
 stof_doctrine_extensions:
